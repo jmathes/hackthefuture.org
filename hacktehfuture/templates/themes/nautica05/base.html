@@ -1,0 +1,190 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+{% load i18n %}
+
+<head>
+
+
+<title>
+    {% block title %}
+      {% if title %} {{ title }} {% else %} {{ configuration.SYSTEM_TITLE }} {% endif %}
+    {% endblock %}
+</title>
+
+  <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8" />
+  <meta name="author" content="fullahead.org - studio7designs.com" />
+  <meta name="description" content="Site Description Here" />
+  <meta name="keywords" content="keywords, here" />
+  <meta name="robots" content="index, follow, noarchive" />
+  <meta name="googlebot" content="noarchive" />
+
+  <link rel="stylesheet" type="text/css" href="/static/themes/nautica05/css/layout.css" media="screen, projection, tv " />
+  <link rel="stylesheet" type="text/css" href="/static/themes/nautica05/css/html.css" media="screen, projection, tv " />
+
+</head>
+
+<body>
+
+<!-- #content: holds all except site footer - causes footer to stick to bottom -->
+<div id="content">
+
+  <!-- #header: holds the logo and top links -->
+  <div id="header" class="width">
+
+    <img src="images/logo.gif" alt=""/>
+
+    <ul>
+      {% block user_header %}
+		{% if user %}
+		  {% if is_superuser %}<li><a href="{% url views.admin.index %}">{% trans "Edit site" %}</a></li>{% endif %}
+		  {% if is_admin %}<li><a href="{% url views.admin.display_memcache_info %}">{% trans "Memcache" %}</a></li>{% endif %}
+		  <li><a href="{% if is_superuser %}/admin/edit/user/{{ user.email }}{% endif %}">{{ user.email }}</a></li>
+		  {% if sign_out %}<li><a href="{{sign_out}}">{% trans "Sign out" %}</a></li>{% endif %}
+		{% else %}
+		  {% if sign_in %}<li><a href="{{sign_in}}">{% trans "Sign in" %}</a></li>{%endif%}
+		{% endif %}
+	  {% endblock %}
+    </ul>
+    
+
+  </div>
+  <!-- #header end -->
+
+
+  <!-- #headerImg: holds the main header image or flash -->
+  <div id="headerImg" class="width"></div>
+
+
+
+  <!-- #menu: the main large box site menu -->
+  <div id="menu" class="width">
+
+    <ul>
+      <li>
+        <a href="/" onfocus="blur()">
+          <span class="title ">Home</span>
+          <span class="desc">{{configuration.SYSTEM_TITLE}}</span>
+        </a>     
+	  </li>
+      <li>
+        <a href="#" onfocus="blur()">
+          <span class="title ">&nbsp;</span>
+          <span class="desc style3">&nbsp;</span>        </a>      </li>
+      <li>
+        <a href="#" onfocus="blur()">
+          <span class="title ">&nbsp;</span>
+          <span class="desc">&nbsp;</span>
+        </a>
+      </li>
+      <li>
+        <a href="#" onfocus="blur()">
+          <span class="title ">&nbsp;</span>
+          <span class="desc">&nbsp;</span>
+        </a>
+      </li>
+    </ul>
+
+  </div>
+  <!-- #menu end -->
+
+
+
+  <!-- #page: holds the page content -->
+  <div id="page">
+
+
+    <!-- #columns: holds the columns of the page -->
+    <div id="columns" class="widthPad">
+
+
+    <!-- Left column -->
+    <div class="floatLeft width73">
+		{% block breadcrumbs %}				
+		{% endblock%}
+      	<h1>
+      	{% block heading %}
+			{% if title %} {{ title }} {% else %} {{ configuration.SYSTEM_TITLE }} {% endif %}
+		{% endblock %}
+		</h1>
+		
+		{% block content %}
+		  <p>{% trans "This page does not yet have any content." %}</p>
+		{% endblock %}
+    </div>
+    <!-- Left column end -->
+
+
+    <!-- Right link column -->
+   
+    <div class="floatRight width25 lightBlueBg horzPad">
+	  <p>{{ configuration.SYSTEM_DESCRIPTION }}</p>
+
+      <div id="sidebar">
+     	{% block sidebar %}
+	        {% if sidebar %}
+	          {{ sidebar|safe }}
+	        {% else %}
+	          &nbsp;
+	        {% endif %}
+	      {% endblock %}
+		<hr />
+	  </div>
+
+		{% block right_column %}
+		  <p>&nbsp;</p>
+		{% endblock %}
+
+
+    </div>
+    <!-- Right links column end -->
+
+
+
+    </div>
+    <!-- #columns end -->
+
+  </div>
+  <!-- #page end -->
+
+</div>
+<!-- #content end -->
+
+
+
+
+<!-- #footer: holds the site footer (logo and links) -->
+<div id="footer">
+
+  <!-- #bg: applies the site width and footer background -->
+  <div id="bg" class="width">
+
+    <img src="images/logo.gif" alt=""/>
+	
+	{% block footer %}
+		<center>{{ configuration.FOOTER_HTML|safe }}</center>
+	{% endblock %}
+
+  </div>
+  <!-- #bg end -->
+
+</div>
+<!-- #footer end -->
+{% block tracking %}
+	{% if configuration.ANALYTICS_ID %}
+		<script type="text/javascript">
+		var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+		document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+		<script type="text/javascript">
+		var pageTracker = _gat._getTracker("{{ configuration.ANALYTICS_ID }}");
+		pageTracker._initData();
+		pageTracker._trackPageview();
+		</script>
+	{% endif %}
+{% endblock %}
+</body>
+
+</html>

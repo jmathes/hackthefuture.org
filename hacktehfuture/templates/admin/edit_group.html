@@ -1,0 +1,45 @@
+{% extends "admin/base.html" %}
+
+{% load i18n %}
+
+{% block heading %}
+{% if group %}
+  {% trans "Edit Group" %}: {{ group.name }}
+{% else %}
+  {% trans "Create Group" %}
+{% endif %}
+{% endblock %}
+
+
+{% block content %}
+
+{% if group %}
+  <a href="{% url views.admin.delete_group group.key.id %}">{% trans "Delete Group" %}</a>
+  <br /><br />
+{% endif %}
+
+
+<h1>{% trans "Group Information" %}:</h1>
+
+<form action="{% if group %}{% url views.admin.edit_group group.key.id %}{% else %}{% url views.admin.new_group %}{% endif %}"
+      method="post">
+  <table cellpadding="5">
+  {% for field in form %}
+    <tr>
+      <td>{{ field.label_tag }}</td>
+      <td>
+        {{ field }}
+        {% if field.help_text %}<br>{{ field.help_text }}{% endif %}
+        {% if field.errors %}
+          <br><span class="error">{{ field.errors }}</span>
+        {% endif %}
+      </td>
+    </tr>
+  {% endfor %}
+  </table>
+  <br>
+  <input type="submit" value="{% trans "Save" %}" />
+</form>
+
+
+{% endblock %}

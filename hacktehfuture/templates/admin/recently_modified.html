@@ -1,0 +1,31 @@
+{% extends "admin/base.html" %}
+
+{% load i18n %}
+
+{% block content %}
+
+<h1>{% trans "Recently Modified Pages" %}:</h1>
+
+<ul style="list-style-type:none; padding-left:20px">
+  {% for page in pages %}
+  <li style="padding-bottom:10px;">
+    <b>{{page.title|escape}}</b> -
+    <a href="{% url views.main.get_url page.path %}">{% trans "view" %}</a> -
+    <a href="{% url views.admin.edit_page page.key.id %}">{% trans "edit" %}</a> -
+    <a href="{% url views.admin.new_page page.key.id %}">{% trans "add child" %}</a>
+    <br>
+    <span style="font-size:10pt">
+      <span style="color:green;">
+        {% if page.path %}
+          {{ page.path }}
+        {% else %}
+          <i>{% trans "root" %}</i>
+        {% endif %}
+      </span> -
+      {% trans "id" %}: {{ page.key.id }} -
+      {% trans "last modified" %}: {{ page.modified|date:"m/d/Y" }}
+    </span>
+  {% endfor %}
+</ul>
+
+{% endblock %}

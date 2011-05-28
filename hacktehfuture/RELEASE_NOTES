@@ -1,0 +1,37 @@
+Copyright 2008 Google Inc.
+All rights reserved.
+
+App Engine Site Creator - Release Notes
+
+Version 1.1.1 - February 18, 2009
+=================================
+
+  - Added anonymous (public) browsing of pages marked as "Anyone can read"
+      http://code.google.com/p/app-engine-site-creator/issues/detail?id=19
+  - Fixed "create page" error caused by creating a page not under root page
+      http://code.google.com/p/app-engine-site-creator/issues/detail?id=21
+  - Added different front end as an example of customization 
+      http://code.google.com/p/app-engine-site-creator/issues/detail?id=7
+
+
+Version 1.1 - October 30, 2008
+==============================
+
+  - Replaced the Dojo page editor with FCKEditor
+      http://code.google.com/p/app-engine-site-creator/issues/detail?id=15
+  - Added a button to FCKEditor to insert Google Gadgets
+      http://code.google.com/p/app-engine-site-creator/issues/detail?id=16
+  - Upgraded references to Dojo 1.2.0
+      http://code.google.com/p/app-engine-site-creator/issues/detail?id=14
+  - Added a breadcrumb bar on pages
+      http://code.google.com/p/app-engine-site-creator/issues/detail?id=6
+  - Fixed a bug when clicking on "Add to Sidebar"
+      http://code.google.com/p/app-engine-site-creator/issues/detail?id=9
+  - Minor code cleanup
+      http://code.google.com/p/app-engine-site-creator/issues/detail?id=13
+
+
+Version 1.0 - October 16, 2008
+==============================
+
+Initial Release

@@ -1,0 +1,32 @@
+{% extends "admin/_base.html" %}
+
+{% load i18n %}
+
+{% block sidebar %}
+<h1></h1>
+
+<ul>
+  <li><a href="/">{% trans "Main site" %}</a></li>
+  <li><a href="{% url views.admin.get_help %}">{% trans "Help" %}</a></li>
+</ul>
+
+<h1>{% trans "Pages" %}</h1>
+<ul>
+  <li><a href="{% url views.admin.index %}">{% trans "Sitemap" %}</a></li>
+  <li><a href="{% url views.admin.recently_modified %}">{% trans "Recently modified" %}</a></li>
+  <li><a href="{% url views.admin.new_page None %}">{% trans "Create page" %}</a></li>
+  <li><a href="{% url views.admin.edit_sidebar %}">{% trans "Edit sidebar" %}</a></li>
+</ul>
+
+<h1>{% trans "Users" %}</h1>
+<ul>
+  <li><a href="{% url views.admin.filter_users %}">{% trans "List users" %}</a></li>
+  <li><a href="{% url views.admin.list_groups %}">{% trans "List groups" %}</a></li>
+  <li><a href="{% url views.admin.edit_user None %}">{% trans "Find user" %}</a></li>
+  <li><a href="{% url views.admin.bulk_edit_users %}">{% trans "Bulk edit users" %}</a></li>
+</ul>
+
+{% endblock %}
+
+
+{% block tracking %}{% endblock %}

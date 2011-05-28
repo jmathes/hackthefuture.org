@@ -1,0 +1,443 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# Zubarev Alexandr aka Strike <actionstrike@gmail.com>, 2011
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-05-26 11:51+0200\n"
+"PO-Revision-Date: 2011-05-13 17:58+0400\n"
+"Last-Translator: Zubarev Alexandr aka Strike <actionstrike@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: forms.py:33
+msgid "Title"
+msgstr "Заголовок"
+
+#: forms.py:36 forms.py:59
+msgid "Name"
+msgstr "Имя"
+
+#: forms.py:60
+msgid "Description"
+msgstr ""
+
+#: forms.py:73
+msgid "Is superuser"
+msgstr ""
+
+#: templates/base.html:35 templates/themes/ecobusiness/base.html:26
+#: templates/themes/nautica05/base.html:42
+msgid "Edit site"
+msgstr "Редактировать сайт"
+
+#: templates/base.html:36 templates/themes/ecobusiness/base.html:27
+#: templates/themes/nautica05/base.html:43
+msgid "Memcache"
+msgstr ""
+
+#: templates/base.html:37 templates/themes/ecobusiness/base.html:29
+#: templates/themes/nautica05/base.html:45
+msgid "Sign out"
+msgstr "Выйти"
+
+#: templates/base.html:39 templates/themes/ecobusiness/base.html:31
+#: templates/themes/nautica05/base.html:47
+msgid "Sign in"
+msgstr "Войти"
+
+#: templates/base.html:51
+msgid "Sidebar not defined."
+msgstr "Боковая панель не настроена."
+
+#: templates/base.html:64 templates/themes/default/page.html:33
+#: templates/themes/ecobusiness/base.html:69
+#: templates/themes/ecobusiness/page.html:25
+#: templates/themes/nautica05/base.html:114
+#: templates/themes/nautica05/page.html:25
+msgid "This page does not yet have any content."
+msgstr "Эта страница ещё не заполнена.."
+
+#: templates/admin/base.html:9
+msgid "Main site"
+msgstr "Главная страница"
+
+#: templates/admin/base.html:10
+msgid "Help"
+msgstr "Помощь"
+
+#: templates/admin/base.html:13
+msgid "Pages"
+msgstr "Страницы"
+
+#: templates/admin/base.html:15
+msgid "Sitemap"
+msgstr "Карта сайта"
+
+#: templates/admin/base.html:16
+msgid "Recently modified"
+msgstr "Последние изменения"
+
+#: templates/admin/base.html:17
+msgid "Create page"
+msgstr "Создать страницу"
+
+#: templates/admin/base.html:18
+msgid "Edit sidebar"
+msgstr "Редактировать боковую панель"
+
+#: templates/admin/base.html:21
+msgid "Users"
+msgstr "Пользователи"
+
+#: templates/admin/base.html:23
+msgid "List users"
+msgstr "Список пользователей"
+
+#: templates/admin/base.html:24
+msgid "List groups"
+msgstr "Список групп"
+
+#: templates/admin/base.html:25
+msgid "Find user"
+msgstr "Найти пользователя"
+
+#: templates/admin/base.html:26
+msgid "Bulk edit users"
+msgstr "Массовое редактирование пользователей"
+
+#: templates/admin/bulk_edit_users.html:7
+msgid "Add individually"
+msgstr "Добавить вручную"
+
+#: templates/admin/bulk_edit_users.html:10
+msgid "or upload file"
+msgstr "или загрузить файл"
+
+#: templates/admin/bulk_edit_users.html:12
+msgid "Complete"
+msgstr "Полностью"
+
+#: templates/admin/bulk_edit_users.html:14 templates/admin/edit_user.html:31
+msgid "Submit"
+msgstr "Отправить"
+
+#: templates/admin/edit_group.html:7
+msgid "Edit Group"
+msgstr "Редактировать группу"
+
+#: templates/admin/edit_group.html:9
+msgid "Create Group"
+msgstr "Создать группу"
+
+#: templates/admin/edit_group.html:17
+msgid "Delete Group"
+msgstr "Удалить группу"
+
+#: templates/admin/edit_group.html:22
+msgid "Group Information"
+msgstr "Информация о группе"
+
+#: templates/admin/edit_group.html:41 templates/admin/edit_sidebar.html:14
+msgid "Save"
+msgstr "Сохранить"
+
+#: templates/admin/edit_page.html:9
+msgid "Editing"
+msgstr "Редактирование"
+
+#: templates/admin/edit_page.html:11
+msgid "Create Page"
+msgstr "Создать страницу"
+
+#: templates/admin/edit_page.html:120
+msgid "View page"
+msgstr "Посмотреть страницу"
+
+#: templates/admin/edit_page.html:121
+msgid "Delete page"
+msgstr "Удалить страницу"
+
+#: templates/admin/edit_page.html:124
+msgid "Add page to sidebar"
+msgstr "Добавить страницу на боковую панель"
+
+#: templates/admin/edit_page.html:130
+msgid "Page Contents"
+msgstr "Содержимое страницы"
+
+#: templates/admin/edit_page.html:143
+msgid "Complete from title"
+msgstr "Взять из заголовка"
+
+#: templates/admin/edit_page.html:164
+msgid "Save Page"
+msgstr "Сохранить страницу"
+
+#: templates/admin/edit_page.html:171
+msgid "Attachments"
+msgstr "Приложения"
+
+#: templates/admin/edit_page.html:175
+msgid "Current attachments"
+msgstr "Текущие приложения"
+
+#: templates/admin/edit_page.html:187
+msgid "delete"
+msgstr "удалить"
+
+#: templates/admin/edit_page.html:202
+msgid "Please input a valid URL"
+msgstr "Пожалуйста, введите корректную ссылку"
+
+#: templates/admin/edit_page.html:213
+msgid "Upload a file"
+msgstr "Загрузить файл"
+
+#: templates/admin/edit_page.html:216
+msgid "Don't show file in attachments"
+msgstr "Не показывать файл в приложениях"
+
+#: templates/admin/edit_page.html:217
+msgid "Upload"
+msgstr "Загрузить"
+
+#: templates/admin/edit_page.html:221
+msgid "Add a URL"
+msgstr "Добавить ссылку"
+
+#: templates/admin/edit_page.html:224
+msgid "Attach"
+msgstr "Прикрепить"
+
+#: templates/admin/edit_page.html:232
+msgid "Security"
+msgstr "Защита"
+
+#: templates/admin/edit_page.html:237
+msgid "Security is inherited from"
+msgstr "Настройки безопасности наследуются от"
+
+#: templates/admin/edit_page.html:241
+msgid "Anyone can edit"
+msgstr "Все могут редактировать"
+
+#: templates/admin/edit_page.html:245
+msgid "Anyone can read"
+msgstr "Все могут читать"
+
+#: templates/admin/edit_page.html:252
+msgid "Groups that can edit"
+msgstr "Группы, которые могут редактировать"
+
+#: templates/admin/edit_page.html:255 templates/admin/edit_page.html.py:274
+#: templates/admin/edit_page.html:295 templates/admin/edit_page.html.py:309
+#: templates/admin/edit_user.html:42
+msgid "Remove"
+msgstr "Удалить"
+
+#: templates/admin/edit_page.html:260 templates/admin/edit_page.html.py:279
+msgid "Add a group"
+msgstr "Добавить группу"
+
+#: templates/admin/edit_page.html:271
+msgid "Groups that can read"
+msgstr "Группы, которые могут читать"
+
+#: templates/admin/edit_page.html:292
+msgid "Users that can edit"
+msgstr "Пользователи, которые могут редактировать"
+
+#: templates/admin/edit_page.html:300 templates/admin/edit_page.html.py:314
+msgid "Add a user"
+msgstr "Добавить пользователя"
+
+#: templates/admin/edit_page.html:306
+msgid "Users that can read"
+msgstr "Пользователи, которые могут читать"
+
+#: templates/admin/edit_page.html:323
+msgid "Save Security Settings"
+msgstr "Сохранить настройки безопасности"
+
+#: templates/admin/edit_page.html:329
+msgid ""
+"You are about to change the security of a page that is inheriting its "
+"security from a page above it in the heirarchy.  Any subsequent changes to "
+"the parent page will not be reflected on this page and all child pages.  Are "
+"you sure you want to do this?"
+msgstr ""
+"Вы собираетесь изменить настройки безопасности страницы, которая наследует "
+"их от другой страницы. Любые последующие изменения настроек родительской "
+"страницы не будут применяться к этой и подчиненным ей страницам. Вы уверены, "
+"что хотите сделать это?"
+
+#: templates/admin/edit_page.html:342
+msgid "Your changes have been saved"
+msgstr "Ваши изменения сохранены"
+
+#: templates/admin/edit_sidebar.html:7
+msgid "Sidebar definition"
+msgstr "Настройки боковой панели"
+
+#: templates/admin/edit_user.html:25
+msgid "Email"
+msgstr ""
+
+#: templates/admin/edit_user.html:38
+msgid "User's current groups"
+msgstr "Пользовательские группы"
+
+#: templates/admin/edit_user.html:51
+msgid "Add user to group"
+msgstr "Добавить пользователя в группу"
+
+#: templates/admin/edit_user.html:56
+msgid "Add"
+msgstr "Добавить"
+
+#: templates/admin/filter_users.html:7
+msgid "Show All"
+msgstr "Показать всех"
+
+#: templates/admin/filter_users.html:10
+msgid "Filter by group"
+msgstr "Фильтровать по группе"
+
+#: templates/admin/help.html:7
+msgid "Defining the sidebar"
+msgstr "Настройки боковой панели"
+
+#: templates/admin/help.html:9
+msgid "The sidebar is specified in yaml.  Here's an example sidebar definition"
+msgstr "Для настройки боковой панели используется yaml. Примеры настроек:"
+
+#: templates/admin/index.html:42
+msgid "View"
+msgstr "Посмотреть"
+
+#: templates/admin/index.html:46
+msgid "Edit"
+msgstr "Редактировать"
+
+#: templates/admin/index.html:50 templates/themes/default/page.html:14
+#: templates/themes/ecobusiness/page.html:38
+#: templates/themes/nautica05/page.html:33
+msgid "Add child"
+msgstr "Добавить подчиненную страницу"
+
+#: templates/admin/index.html:54
+msgid "Delete"
+msgstr "Удалить"
+
+#: templates/admin/index.html:62
+msgid "Are you sure you want to delete"
+msgstr "Вы уверены, что хотите удалить"
+
+#: templates/admin/index.html:64
+msgid "and all its children?"
+msgstr "и все подчиненные страницы?"
+
+#: templates/admin/index.html:70
+msgid "Cancel"
+msgstr "Отменить"
+
+#: templates/admin/index.html:89
+msgid "Right click on a page for options."
+msgstr "Нажмите правой кнопкой мыши для показа опций"
+
+#: templates/admin/list_groups.html:6
+msgid "Groups"
+msgstr "Группы"
+
+#: templates/admin/list_groups.html:12
+#: templates/admin/recently_modified.html:14
+msgid "edit"
+msgstr "редактировать"
+
+#: templates/admin/list_groups.html:20
+msgid "Create a new group"
+msgstr "Создать новую группу"
+
+#: templates/admin/memcache_info.html:6
+msgid "Hits"
+msgstr ""
+
+#: templates/admin/memcache_info.html:7
+msgid "Misses"
+msgstr ""
+
+#: templates/admin/memcache_info.html:8
+msgid "Byte Hits"
+msgstr ""
+
+#: templates/admin/memcache_info.html:9
+msgid "Items"
+msgstr ""
+
+#: templates/admin/memcache_info.html:10
+msgid "Bytes"
+msgstr ""
+
+#: templates/admin/memcache_info.html:11
+msgid "Oldest Item Age"
+msgstr ""
+
+#: templates/admin/memcache_info.html:13
+msgid "Flush Memcache"
+msgstr ""
+
+#: templates/admin/recently_modified.html:7
+msgid "Recently Modified Pages"
+msgstr "Последние измененные страницы"
+
+#: templates/admin/recently_modified.html:13
+msgid "view"
+msgstr "посмотреть"
+
+#: templates/admin/recently_modified.html:15
+msgid "add child"
+msgstr "добавить подчиненную страницу"
+
+#: templates/admin/recently_modified.html:22
+msgid "root"
+msgstr ""
+
+#: templates/admin/recently_modified.html:25
+msgid "id"
+msgstr ""
+
+#: templates/admin/recently_modified.html:26
+msgid "last modified"
+msgstr "последние изменение"
+
+#: templates/themes/default/page.html:13
+#: templates/themes/ecobusiness/page.html:35
+#: templates/themes/nautica05/page.html:32
+msgid "Edit page"
+msgstr "Редактировать страницу"
+
+#: templates/themes/default/page.html:38
+#: templates/themes/ecobusiness/page.html:42
+#: templates/themes/nautica05/page.html:36
+msgid "Attached files"
+msgstr "Прикрепленные файлы"
+
+#: views/admin.py:571
+#, fuzzy
+msgid "Edit user"
+msgstr "Редактировать сайт"
+
+#: views/admin.py:577
+#, python-format
+msgid "Edit user: %(email)s"
+msgstr ""
+
+#: views/admin.py:597
+msgid "Bulk user upload form"
+msgstr ""

@@ -1,0 +1,344 @@
+{% extends "admin/base.html" %}
+
+{% load i18n %}
+
+{% block body_attributes %}style="visibility:hidden"{% endblock %}
+
+{% block heading %}
+{% if page %}
+  {% trans "Editing" %}: {{page.title}}
+{% else %}
+  {% trans "Create Page" %}
+{% endif %}
+{% endblock %}
+
+{% block includes %}
+  <script type="text/javascript" src="/fckeditor/fckeditor.js"></script>
+  <script type="text/javascript"
+          src="http://ajax.googleapis.com/ajax/libs/dojo/1.2.0/dojo/dojo.xd.js"
+          djConfig="parseOnLoad:true,isDebug:false"></script>
+  <script type="text/javascript">
+    dojo.require('dijit.layout.ContentPane');
+    dojo.require('dijit.layout.TabContainer');
+    dojo.require('dijit.form.Button');
+  </script>
+  <script type="text/javascript">
+    /**
+     * Parses the arguments out of the URL
+     * @return {Object} A dictionary of key/value pairs of the arguments
+     */
+    function getArgs() {
+      var args = {};
+      var nvPairs = document.location.search.slice(1).split('&');
+
+      for (var i = 0, param; param = nvPairs[i]; i++) {
+        var nvPair = param.split("=");
+        var name = unescape(nvPair[0]);
+        var value = unescape(nvPair[1]);
+        args[name] = value;
+      }
+      return args;
+    }
+
+    /**
+     * Sets the body to be visible.  Called onload.
+     */
+    function showBody() {
+      dojo.style(dojo.body(), "visibility", "visible");
+    }
+
+    /**
+     * Selects a tab based on the fragement selected by #.
+     */
+    function selectTab() {
+      var mainTabs = dijit.byId('mainTabs');
+      var tabName = document.location.hash.replace(/^#/,'');
+      tabName += 'Tab';
+      var tabToSelect = dijit.byId(tabName);
+
+      if (tabToSelect) {
+        mainTabs.selectChild(tabToSelect);
+      }
+    }
+
+    /**
+     * Determines if a message should be displayed based on the m parameter in
+     * the URL.  This parameter is the id of the div containing the message.
+     * The method edits the div by wrapping its contents with five span tags
+     * which are needed by the CSS, making it visible, and setting up a fade-out
+     * animation.
+     */
+    function showMessage() {
+      var args = getArgs();
+      var message_id = args['m'];
+      if (message_id) {
+        var message = dojo.byId(message_id);
+        var messageSpan = dojo.doc.createElement('span');
+        messageSpan.innerHTML = message.innerHTML;
+        for (var i = 0; i < 4; i++) {
+          var newSpan = dojo.doc.createElement('span');
+          newSpan.appendChild(messageSpan);
+          messageSpan = newSpan;
+        }
+        message.innerHTML = '';
+        message.appendChild(messageSpan);
+        dojo.addClass(message, 'message');
+        message.style.visibility = 'visible';
+        dojo.fadeOut({node: message_id, duration: 2000, delay:10000}).play()
+      }
+    }
+    
+    function createEditor() {
+      var oFCKeditor = new FCKeditor('editorHtml');
+      oFCKeditor.BasePath = "/fckeditor/";
+      oFCKeditor.Config["CustomConfigurationsPath"] = "/static/js/fck_config.js";
+      oFCKeditor.Height = 328;
+      oFCKeditor.ToolbarSet = 'AESC_Toolbar';
+      oFCKeditor.ReplaceTextarea();
+    }
+
+    dojo.addOnLoad(selectTab);
+    dojo.addOnLoad(showMessage);
+    dojo.addOnLoad(createEditor);
+    dojo.addOnLoad(showBody);
+  </script>
+{% endblock %}
+
+{% block content %}
+
+<script type="text/javascript">
+  function generate_name() {
+    str = dojo.byId('id_title').value;
+    str = str.replace(/ /g, '-');
+    str = str.replace(/\W/g, '-');
+    str = str.replace(/\-+/g, '-');
+    dojo.byId('id_name').value = str.toLowerCase();
+  }
+</script>
+
+{% if page %}
+  <a href="{% url views.main.get_url page.path %}">{% trans "View page" %}</a> |
+  <a href="{% url views.admin.delete_page page.key.id %}">{% trans "Delete page" %}</a>
+  {% if is_superuser %}
+    {% if not page.in_sidebar %}
+  | <a href=" {% url views.admin.add_to_sidebar page.key.id %}">{% trans "Add page to sidebar" %}</a>
+    {% endif %}
+  {% endif %}
+{% endif %}
+
+<div id="mainTabs" dojoType="dijit.layout.TabContainer" style="margin-top:15px; width:100%; height:530px;">
+<div dojoType="dijit.layout.ContentPane" title="{% trans "Page Contents" %}" style="padding:5px;">
+  <form action="{% if page %}{% url views.admin.edit_page page.key.id %}{% else %}{% url views.admin.new_page parent_id %}{% endif %}"
+        method="post"
+        enctype="multipart/form-data"
+        id="editForm">
+    <table id="pageContentsTable">
+    {% for field in form %}
+      <tr>
+        <td style="font-weight:bold;">{{ field.label_tag }}</td>
+        <td>
+          {{ field }}
+          {% ifequal field.name "name" %}
+            &nbsp; <span class="small"><a href="javascript:generate_name();">
+              {% trans "Complete from title" %}</a></span>
+          {% endifequal %}
+          {% if field.help_text %}<br>{{ field.help_text }}{% endif %}
+          {% if field.errors %}
+            <br><span class="error">{{ field.errors }}</span>
+          {% endif %}
+        </td>
+      </tr>
+      {% endfor %}
+    </table>
+    <textarea id="editorHtml" name="editorHtml">
+      {{ page.content }}
+    </textarea>
+    <br />
+    <script type="text/javascript">
+      function submitContents() {
+        dojo.byId('editForm').submit();
+      }
+    </script>
+    <button dojoType="dijit.form.Button"
+            onclick="javascript:submitContents();">
+      {% trans "Save Page" %}
+    </button>
+  </form>
+</div><!-- closing content pane -->
+
+
+{% if page %}
+<div id="filesTab" dojoType="dijit.layout.ContentPane" title="{% trans "Attachments" %}" style="padding:5px;">
+
+  {% if files %}
+  <div class="securityGroup">
+    {% trans "Current attachments" %}:
+    <ul style="list-style-type:none;">
+    {% for file in files %}
+      <li style="list-style-image:url({{file.icon}})">
+      {% if file.url %}
+        <a href="{{ file.url }}">
+      {% else %}
+        <a href="{% url views.main.get_url file.path %}">
+      {% endif %}
+          {{ file.name }}</a>
+      &nbsp;
+      <a href="{% url views.admin.delete_file page.key.id,file.key.id %}"
+         title="{% trans "delete" %} {{file.name}}">
+        <img src="/static/images/trash.gif"></a>
+      {% if file.is_hidden %}
+        <i>hidden</i>
+      {% endif %}
+    {% endfor %}
+    </ul>
+  </div>
+  {% endif %}
+
+  <script type="text/javascript">
+  function attachUrl() {
+    if (dojo.byId('urlInput').value != '') {
+      dojo.byId('fileForm').submit();
+    } else {
+      alert('{% trans "Please input a valid URL" %}');
+    }
+  }
+  </script>
+
+  <form action="{% url views.admin.upload_file %}"
+        method="post"
+        enctype="multipart/form-data"
+        id="fileForm">
+    <input type="hidden" name="page_id" value="{{ page.key.id }}" />
+    <div class="securityGroup">
+      {% trans "Upload a file" %}: <br>
+      <div style="padding-left: 40px; padding-top: 20px;">
+        <input type="file" name="attachment"/ > <p>
+        <input type="checkbox" name="hidden" /> &nbsp; {% trans "Don't show file in attachments" %} <br><br>
+        <input type="submit" value="{% trans "Upload" %}" />
+      </div>
+    </div>
+    <div class="securityGroup">
+      {% trans "Add a URL" %}: <br>
+      <div style="padding-left:40px; padding-top:20px;">
+        <input type="text" id="urlInput" name="url" /> &nbsp;
+        <input type="button" onclick="attachUrl();" value="{% trans "Attach" %}" />
+      </div>
+    </div>
+  </form>
+</div> <!-- closing content pane -->
+{% endif %}
+
+{% if page %}
+<div id="securityTab" dojoType="dijit.layout.ContentPane" title="{% trans "Security" %}" style="padding:5px;">
+<form action="{% url views.admin.edit_acl %}" method="post" id="securityForm">
+  <input type="hidden" name="page_id" value="{{ page.key.id }}" />
+<div id="pageSecurity">
+  {% if acl_data.inherits_acl %}
+  <h2>{% trans "Security is inherited from" %} "/{{ page.InheritsAclFrom.path }}"</h2>
+  {% endif %}
+  <div class="securityGroup">
+    <div>
+      {% trans "Anyone can edit" %}: <input type="checkbox"{% if page.acl.global_write %}
+                              checked="checked"{% endif %} name="global_write"/>
+    </div>
+    <div>
+      {% trans "Anyone can read" %}: <input type="checkbox"{% if page.acl.global_read %}
+                              checked="checked"{% endif %} name="global_read"/>
+    </div>
+  </div>
+  <div>
+    <div class="securityGroup">
+      <div class="aclExisting">
+      {% trans "Groups that can edit" %}:
+      <ul>
+      {% for group in acl_data.group_write %}
+        <li>{{ group }} - {% trans "Remove" %} <input type="checkbox" name="group_write_remove_{{ group.key.id }}" /></li>
+      {% endfor %}
+      </ul>
+      </div>
+      <div class="aclAdd">
+        {% trans "Add a group" %}:
+        <select name="group_write">
+          <option value=""></option>
+          {% for group in acl_data.groups_without_write %}
+          <option value="{{ group.key.id }}">{{ group }}</option>
+          {% endfor %}
+        </select>
+      </div>
+    </div>
+    <div class="securityGroup">
+      <div class="aclExisting">
+      {% trans "Groups that can read" %}:
+      <ul>
+      {% for group in acl_data.group_read %}
+        <li>{{ group }} - {% trans "Remove" %} <input type="checkbox" name="group_read_remove_{{ group.key.id }}" /></li>
+      {% endfor %}
+      </ul>
+      </div>
+      <div class="aclAdd">
+        {% trans "Add a group" %}:
+        <select name="group_read">
+          <option value=""></option>
+          {% for group in acl_data.groups_without_read %}
+          <option value="{{ group.key.id }}">{{ group }}</option>
+          {% endfor %}
+        </select>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div class="securityGroup">
+      <div class="aclExisting">
+        {% trans "Users that can edit" %}:
+        <ul>
+        {% for user_profile in acl_data.user_write %}
+          <li>{{ user_profile }} - {% trans "Remove" %} <input type="checkbox" name="user_write_remove_{{ user_profile.key.id }}" /></li>
+        {% endfor %}
+        </ul>
+      </div>
+      <div class="aclAdd">
+        {% trans "Add a user" %}:
+        <input type="text" name="user_write" />
+      </div>
+    </div>
+    <div class="securityGroup">
+      <div class="aclExisting">
+        {% trans "Users that can read" %}:
+        <ul>
+        {% for user_profile in acl_data.user_read %}
+          <li>{{ user_profile }} - {% trans "Remove" %} <input type="checkbox" name="user_read_remove_{{ user_profile.key.id }}" /></li>
+        {% endfor %}
+        </ul>
+      </div>
+      <div class="aclAdd">
+        {% trans "Add a user" %}:
+        <input type="text" name="user_read" />
+      </div>
+    </div>
+  </div>
+</div>
+<button dojoType="dijit.form.Button"
+        onclick="javascript:saveSecurity();"
+        style="margin-top:15px;">
+  {% trans "Save Security Settings" %}
+</button>
+</form>
+<script type="text/javascript">
+function saveSecurity() {
+  {% if acl_data.inherits_acl %}
+    var message = '{% trans "You are about to change the security of a page that is inheriting its security from a page above it in the heirarchy.  Any subsequent changes to the parent page will not be reflected on this page and all child pages.  Are you sure you want to do this?" %}';
+    if (!confirm(message)) {
+      return;
+    }
+  {% endif %}
+  dojo.byId('securityForm').submit();
+}
+</script>
+</div> <!-- closing content pane -->
+{% endif %}
+</div> <!-- closing tab container -->
+
+<div id="msgChangesSaved" style="visibility: hidden;">
+  {% trans "Your changes have been saved" %}
+</div>
+{% endblock %}

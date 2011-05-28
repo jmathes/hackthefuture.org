@@ -1,0 +1,101 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+{% load i18n %}
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>
+    {% block title %}
+      {% if title %} {{ title }} {% else %} {{ configuration.SYSTEM_TITLE }} {% endif %}
+    {% endblock %}
+</title>
+<link href="/static/themes/ecobusiness/css/common.css" rel="stylesheet" type="text/css" />
+</head>
+<body {% block body_attributes %}{% endblock %}>
+	<!-- Start Header -->
+	<div id="header">
+		<div class="container">
+			<h1><a href="/" title="{{ configuration.SYSTEM_TITLE }}">{{ configuration.SYSTEM_TITLE }}<span></span></a></h1>
+			<hr />
+			<!-- top navigation -->
+			<ul id="navigation">
+				<li><a href="/" title="Home">Home</a></li>
+				{% block user_header %}
+					{% if user %}
+					  {% if is_superuser %}<li><a href="{% url views.admin.index %}">{% trans "Edit site" %}</a></li>{% endif %}
+					  {% if is_admin %}<li><a href="{% url views.admin.display_memcache_info %}">{% trans "Memcache" %}</a></li>{% endif %}
+					  <li>{{ user.email }}</li>
+					  {% if sign_out %}<li><a href="{{sign_out}}">{% trans "Sign out" %}</a></li>{% endif %}
+					{% else %}
+					  {% if sign_in %}<li><a href="{{sign_in}}">{% trans "Sign in" %}</a></li>{%endif%}
+					{% endif %}
+				{% endblock %}
+			</ul>
+			<hr />
+			<!-- banner message and building background -->
+			<div id="banner">
+				{{ configuration.SYSTEM_DESCRIPTION }}
+			</div>
+			<hr />
+		</div>
+	</div>
+	<!-- Start Main Content -->
+	<div id="main" class="container">
+		<!-- left column (products and features) -->
+		<div id="leftcolumn">
+			{% block sidebar %}
+		        {% if sidebar %}
+		          {{ sidebar|safe }}
+		        {% else %}
+		          &nbsp;
+		        {% endif %}
+		      {% endblock %}
+			<hr />
+		</div>
+		<!-- main content area -->
+		<div id="center">
+			<h3>
+			{% block breadcrumbs %}				
+			{% endblock%}
+			<h3>
+			<div class="article_wrapper">				
+				<h2>
+				{% block heading %}
+					{% if title %} {{ title }} {% else %} {{ configuration.SYSTEM_TITLE }} {% endif %}
+				{% endblock %}
+				</h2>
+				{% block content %}
+				  <p>{% trans "This page does not yet have any content." %}</p>
+				{% endblock %}
+			</div>
+			<hr />
+		</div>
+		{% block right_column %}
+		  <p>&nbsp;</p>
+		{% endblock %}
+	</div>
+	<!-- Start Footer -->
+	<div id="footer">
+		<div class="container">
+			{% block footer %}
+				<center>{{ configuration.FOOTER_HTML|safe }}</center>
+			{% endblock %}
+
+			{% block tracking %}
+				{% if configuration.ANALYTICS_ID %}
+					<script type="text/javascript">
+					var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+					document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+					</script>
+					<script type="text/javascript">
+					var pageTracker = _gat._getTracker("{{ configuration.ANALYTICS_ID }}");
+					pageTracker._initData();
+					pageTracker._trackPageview();
+					</script>
+				{% endif %}
+			{% endblock %}
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,442 @@
+# Polish translation for the app-engine-site-creator.
+# Copyright (C) 2011 App Engine Site Creator
+# This file is distributed under the same license as the app-engine-site-creator package.
+# Robert Frysiak <robert.frysiak@gmail.com>, 2011.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: app-engine-site-creator 1.1.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-05-26 11:51+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Robert Frysiak <robert.frysiak@gmail.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: forms.py:33
+msgid "Title"
+msgstr "Tytuł"
+
+#: forms.py:36 forms.py:59
+msgid "Name"
+msgstr "Nazwa"
+
+#: forms.py:60
+msgid "Description"
+msgstr "Opis"
+
+#: forms.py:73
+msgid "Is superuser"
+msgstr "Jest superużytkownikiem"
+
+#: templates/base.html:35 templates/themes/ecobusiness/base.html:26
+#: templates/themes/nautica05/base.html:42
+msgid "Edit site"
+msgstr "Edytuj witrynę"
+
+#: templates/base.html:36 templates/themes/ecobusiness/base.html:27
+#: templates/themes/nautica05/base.html:43
+msgid "Memcache"
+msgstr ""
+
+#: templates/base.html:37 templates/themes/ecobusiness/base.html:29
+#: templates/themes/nautica05/base.html:45
+msgid "Sign out"
+msgstr "Wyloguj"
+
+#: templates/base.html:39 templates/themes/ecobusiness/base.html:31
+#: templates/themes/nautica05/base.html:47
+msgid "Sign in"
+msgstr "Zaloguj"
+
+#: templates/base.html:51
+msgid "Sidebar not defined."
+msgstr "Sidebar nie został zdefiniowany."
+
+#: templates/base.html:64 templates/themes/default/page.html:33
+#: templates/themes/ecobusiness/base.html:69
+#: templates/themes/ecobusiness/page.html:25
+#: templates/themes/nautica05/base.html:114
+#: templates/themes/nautica05/page.html:25
+msgid "This page does not yet have any content."
+msgstr "Ta strona nie ma jeszcze treści."
+
+#: templates/admin/base.html:9
+msgid "Main site"
+msgstr "Strona główna"
+
+#: templates/admin/base.html:10
+msgid "Help"
+msgstr "Pomoc"
+
+#: templates/admin/base.html:13
+msgid "Pages"
+msgstr "Strony"
+
+#: templates/admin/base.html:15
+msgid "Sitemap"
+msgstr "Mapa witryny"
+
+#: templates/admin/base.html:16
+msgid "Recently modified"
+msgstr "Ostatnio zmienione"
+
+#: templates/admin/base.html:17
+msgid "Create page"
+msgstr "Utwórz stronę"
+
+#: templates/admin/base.html:18
+msgid "Edit sidebar"
+msgstr "Edytuj sidebar"
+
+#: templates/admin/base.html:21
+msgid "Users"
+msgstr "Użytkownicy"
+
+#: templates/admin/base.html:23
+msgid "List users"
+msgstr "Lista użytkowników"
+
+#: templates/admin/base.html:24
+msgid "List groups"
+msgstr "Lista grup"
+
+#: templates/admin/base.html:25
+msgid "Find user"
+msgstr "Znajdź użytkownika"
+
+#: templates/admin/base.html:26
+msgid "Bulk edit users"
+msgstr "Masowa edycja użytkowników"
+
+#: templates/admin/bulk_edit_users.html:7
+msgid "Add individually"
+msgstr "Dodaj indywidualnie"
+
+#: templates/admin/bulk_edit_users.html:10
+msgid "or upload file"
+msgstr "lub załaduj z pliku"
+
+#: templates/admin/bulk_edit_users.html:12
+msgid "Complete"
+msgstr "Uzupełnij"
+
+#: templates/admin/bulk_edit_users.html:14 templates/admin/edit_user.html:31
+msgid "Submit"
+msgstr "Wyślij"
+
+#: templates/admin/edit_group.html:7
+msgid "Edit Group"
+msgstr "Edycja Grupy"
+
+#: templates/admin/edit_group.html:9
+msgid "Create Group"
+msgstr "Utwórz Grupę"
+
+#: templates/admin/edit_group.html:17
+msgid "Delete Group"
+msgstr "Usuń Grupę"
+
+#: templates/admin/edit_group.html:22
+msgid "Group Information"
+msgstr "Informacje o grupie"
+
+#: templates/admin/edit_group.html:41 templates/admin/edit_sidebar.html:14
+msgid "Save"
+msgstr "Zapisz"
+
+#: templates/admin/edit_page.html:9
+msgid "Editing"
+msgstr "Edycja"
+
+#: templates/admin/edit_page.html:11
+msgid "Create Page"
+msgstr "Utwórz stronę"
+
+#: templates/admin/edit_page.html:120
+msgid "View page"
+msgstr "Pokaż stronę"
+
+#: templates/admin/edit_page.html:121
+msgid "Delete page"
+msgstr "Usuń stronę"
+
+#: templates/admin/edit_page.html:124
+msgid "Add page to sidebar"
+msgstr "Dodaj stronę do sidebara"
+
+#: templates/admin/edit_page.html:130
+msgid "Page Contents"
+msgstr "Zawartość Strony"
+
+#: templates/admin/edit_page.html:143
+msgid "Complete from title"
+msgstr "Uzupełnij z tytułu"
+
+#: templates/admin/edit_page.html:164
+msgid "Save Page"
+msgstr "Zapisz Stronę"
+
+#: templates/admin/edit_page.html:171
+msgid "Attachments"
+msgstr "Załączniki"
+
+#: templates/admin/edit_page.html:175
+msgid "Current attachments"
+msgstr "Bieżące załączniki"
+
+#: templates/admin/edit_page.html:187
+msgid "delete"
+msgstr "usuń"
+
+#: templates/admin/edit_page.html:202
+msgid "Please input a valid URL"
+msgstr "Wprowadź poprawny adres URL"
+
+#: templates/admin/edit_page.html:213
+msgid "Upload a file"
+msgstr "Wyślij plik"
+
+#: templates/admin/edit_page.html:216
+msgid "Don't show file in attachments"
+msgstr "Nie pokazuj pliku w załącznikach"
+
+#: templates/admin/edit_page.html:217
+msgid "Upload"
+msgstr "Wyślij"
+
+#: templates/admin/edit_page.html:221
+msgid "Add a URL"
+msgstr "Dodaj adres URL"
+
+#: templates/admin/edit_page.html:224
+msgid "Attach"
+msgstr "Załącz"
+
+#: templates/admin/edit_page.html:232
+msgid "Security"
+msgstr "Zabezpieczenia"
+
+#: templates/admin/edit_page.html:237
+msgid "Security is inherited from"
+msgstr "Zabezpieczenia dziedziczone są z"
+
+#: templates/admin/edit_page.html:241
+msgid "Anyone can edit"
+msgstr "Każdy może edytować"
+
+#: templates/admin/edit_page.html:245
+msgid "Anyone can read"
+msgstr "Każdy może czytać"
+
+#: templates/admin/edit_page.html:252
+msgid "Groups that can edit"
+msgstr "Grupy mogące edytować"
+
+#: templates/admin/edit_page.html:255 templates/admin/edit_page.html.py:274
+#: templates/admin/edit_page.html:295 templates/admin/edit_page.html.py:309
+#: templates/admin/edit_user.html:42
+msgid "Remove"
+msgstr "Usuń"
+
+#: templates/admin/edit_page.html:260 templates/admin/edit_page.html.py:279
+msgid "Add a group"
+msgstr "Dodaj grupę"
+
+#: templates/admin/edit_page.html:271
+msgid "Groups that can read"
+msgstr "Grupy mogące czytać"
+
+#: templates/admin/edit_page.html:292
+msgid "Users that can edit"
+msgstr "Użytkownicy mogący edytować"
+
+#: templates/admin/edit_page.html:300 templates/admin/edit_page.html.py:314
+msgid "Add a user"
+msgstr "Dodaj użytkownika"
+
+#: templates/admin/edit_page.html:306
+msgid "Users that can read"
+msgstr "Użytkownicy mogący czytać"
+
+#: templates/admin/edit_page.html:323
+msgid "Save Security Settings"
+msgstr "Zapisz ustawienia zabezpieczeń"
+
+#: templates/admin/edit_page.html:329
+msgid ""
+"You are about to change the security of a page that is inheriting its "
+"security from a page above it in the heirarchy.  Any subsequent changes to "
+"the parent page will not be reflected on this page and all child pages.  Are "
+"you sure you want to do this?"
+msgstr ""
+"Zmieniasz zabezpieczenia strony, która dziedziczy je po stronie nadrzędnej w "
+"hierarchii. Każde kolejne zmiany zabezpieczeń na stronie nadrzędnej nie będą "
+"uwzględnione na bieżącej stronie i jej podstronach.  Czy chcesz to zrobić?"
+
+#: templates/admin/edit_page.html:342
+msgid "Your changes have been saved"
+msgstr "Twoje zmiany zostały zapisane"
+
+#: templates/admin/edit_sidebar.html:7
+msgid "Sidebar definition"
+msgstr "Definicja sidebara"
+
+#: templates/admin/edit_user.html:25
+msgid "Email"
+msgstr ""
+
+#: templates/admin/edit_user.html:38
+msgid "User's current groups"
+msgstr "Bieżące grupy użytkownika"
+
+#: templates/admin/edit_user.html:51
+msgid "Add user to group"
+msgstr "Dodaj użytkownika do grupy"
+
+#: templates/admin/edit_user.html:56
+msgid "Add"
+msgstr "Dodaj"
+
+#: templates/admin/filter_users.html:7
+msgid "Show All"
+msgstr "Pokaż Wszystkich"
+
+#: templates/admin/filter_users.html:10
+msgid "Filter by group"
+msgstr "Filtrowanie po grupie"
+
+#: templates/admin/help.html:7
+msgid "Defining the sidebar"
+msgstr "Definiowanie sidebara"
+
+#: templates/admin/help.html:9
+msgid "The sidebar is specified in yaml.  Here's an example sidebar definition"
+msgstr "Sidebar zdefiniowany jest w formacie yaml. Oto przykładowa definicja"
+
+#: templates/admin/index.html:42
+msgid "View"
+msgstr "Pokaż"
+
+#: templates/admin/index.html:46
+msgid "Edit"
+msgstr "Edytuj"
+
+#: templates/admin/index.html:50 templates/themes/default/page.html:14
+#: templates/themes/ecobusiness/page.html:38
+#: templates/themes/nautica05/page.html:33
+msgid "Add child"
+msgstr "Dodaj podstronę"
+
+#: templates/admin/index.html:54
+msgid "Delete"
+msgstr "Usuń"
+
+#: templates/admin/index.html:62
+msgid "Are you sure you want to delete"
+msgstr "Czy potwierdzasz usunięcie strony"
+
+#: templates/admin/index.html:64
+msgid "and all its children?"
+msgstr "i wszystkich jej podstron?"
+
+#: templates/admin/index.html:70
+msgid "Cancel"
+msgstr "Anuluj"
+
+#: templates/admin/index.html:89
+msgid "Right click on a page for options."
+msgstr "Kliknij prawym przyciskiem na stronie, aby wyświetlić opcje."
+
+#: templates/admin/list_groups.html:6
+msgid "Groups"
+msgstr "Grupy"
+
+#: templates/admin/list_groups.html:12
+#: templates/admin/recently_modified.html:14
+msgid "edit"
+msgstr "edytuj"
+
+#: templates/admin/list_groups.html:20
+msgid "Create a new group"
+msgstr "Utwórz nową grupę"
+
+#: templates/admin/memcache_info.html:6
+msgid "Hits"
+msgstr ""
+
+#: templates/admin/memcache_info.html:7
+msgid "Misses"
+msgstr ""
+
+#: templates/admin/memcache_info.html:8
+msgid "Byte Hits"
+msgstr ""
+
+#: templates/admin/memcache_info.html:9
+msgid "Items"
+msgstr ""
+
+#: templates/admin/memcache_info.html:10
+msgid "Bytes"
+msgstr ""
+
+#: templates/admin/memcache_info.html:11
+msgid "Oldest Item Age"
+msgstr ""
+
+#: templates/admin/memcache_info.html:13
+msgid "Flush Memcache"
+msgstr "Wyczyść Memcache"
+
+#: templates/admin/recently_modified.html:7
+msgid "Recently Modified Pages"
+msgstr "Ostatnio Zmienione Strony"
+
+#: templates/admin/recently_modified.html:13
+msgid "view"
+msgstr "pokaż"
+
+#: templates/admin/recently_modified.html:15
+msgid "add child"
+msgstr "dodaj podstronę"
+
+#: templates/admin/recently_modified.html:22
+msgid "root"
+msgstr ""
+
+#: templates/admin/recently_modified.html:25
+msgid "id"
+msgstr ""
+
+#: templates/admin/recently_modified.html:26
+msgid "last modified"
+msgstr "ostatnio zmienione"
+
+#: templates/themes/default/page.html:13
+#: templates/themes/ecobusiness/page.html:35
+#: templates/themes/nautica05/page.html:32
+msgid "Edit page"
+msgstr "Edytuj stronę"
+
+#: templates/themes/default/page.html:38
+#: templates/themes/ecobusiness/page.html:42
+#: templates/themes/nautica05/page.html:36
+msgid "Attached files"
+msgstr "Załączone pliki"
+
+#: views/admin.py:571
+msgid "Edit user"
+msgstr "Edytuj użytkownika"
+
+#: views/admin.py:577
+#, python-format
+msgid "Edit user: %(email)s"
+msgstr "Edycja użytkownika: %(email)s"
+
+#: views/admin.py:597
+msgid "Bulk user upload form"
+msgstr "Formularz masowego wczytywania użytkowników"

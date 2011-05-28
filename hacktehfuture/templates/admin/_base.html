@@ -1,0 +1,90 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+  "http://www.w3.org/TR/html4/loose.dtd">
+
+{% load i18n %}
+
+<html>
+  <head>
+        <title>
+    {% block title %}
+      {% if title %} {{ title }} {% else %} {{ configuration.SYSTEM_TITLE }} {% endif %}
+    {% endblock %}
+    </title>
+
+    {% block style %}
+    <style type="text/css">
+      @import "http://ajax.googleapis.com/ajax/libs/dojo/1.2.0/dojo/resources/dojo.css";
+      @import "http://ajax.googleapis.com/ajax/libs/dojo/1.2.0/dijit/themes/tundra/tundra.css";
+      @import "/static/css/default.css";
+    </style>
+    {% endblock %}
+
+    {% block includes %}
+    {% endblock %}
+  </head>
+
+  <body class="tundra" {% block body_attributes %}{% endblock %}>
+    <div id="header">
+      <div id="headerLogo">
+        <img src="/static/images/logo.png" alt="AppEngine Site Creator" />
+      </div>
+      <div id="userHeader">
+        {% block user_header %}
+        {% if user %}
+          <b>{{ user.email }}</b>
+          {% if is_superuser %} | <a href="{% url views.admin.index %}">{% trans "Edit site" %}</a>{% endif %}
+          {% if is_admin %} | <a href="{% url views.admin.display_memcache_info %}">{% trans "Memcache" %}</a>{% endif %}
+          {% if sign_out %} | <a href="{{sign_out}}">{% trans "Sign out" %}</a>{% endif %}
+        {% else %}
+          {% if sign_in %}<a href="{{sign_in}}">{% trans "Sign in" %}</a>{%endif%}
+        {% endif %}
+        {% endblock %}
+      </div>
+    </div>
+
+    <div id=trunk>
+      <div id="sidebar">
+      {% block sidebar %}
+        {% if sidebar %}
+          {{ sidebar|safe }}
+        {% else %}
+          {% trans "Sidebar not defined." %}
+        {% endif %}
+      {% endblock %}
+      </div>
+
+      <div id="right-col">
+        <div id="titleBar">
+          {% block heading %}
+            {% if title %} {{ title }} {% else %} {{ configuration.SYSTEM_TITLE }} {% endif %}
+          {% endblock %}
+        </div>
+        <div id="content">
+        {% block content %}
+          {% trans "This page does not yet have any content." %}
+        {% endblock %}
+        </div>
+      </div>
+    </div>
+
+    <div id="footer">
+    {% block footer %}
+      {{ configuration.FOOTER_HTML|safe }}
+    {% endblock %}
+
+    {% block tracking %}
+    {% if configuration.ANALYTICS_ID %}
+      <script type="text/javascript">
+        var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+        document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+      </script>
+      <script type="text/javascript">
+        var pageTracker = _gat._getTracker("{{ configuration.ANALYTICS_ID }}");
+        pageTracker._initData();
+        pageTracker._trackPageview();
+      </script>
+    {% endif %}
+    {% endblock %}
+    </div>
+</body>
+</html>

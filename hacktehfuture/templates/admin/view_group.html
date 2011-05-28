@@ -1,0 +1,10 @@
+{% extends "admin/base.html" %}
+
+{% block content %}
+<br />
+{% for user in users %}
+<a href="{% url views.admin.edit_user user.email %}">{{ user.email }}</a>
+<br />
+{% endfor %}
+
+{% endblock %}

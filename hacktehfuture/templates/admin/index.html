@@ -1,0 +1,92 @@
+{% extends "admin/base.html" %}
+
+{% load i18n %}
+
+{% block includes %}
+  <script type="text/javascript"
+          src="http://ajax.googleapis.com/ajax/libs/dojo/1.2.0/dojo/dojo.xd.js"
+          djConfig="parseOnLoad:false,isDebug:false"></script>
+
+  <script type="text/javascript">
+    dojo.require('dijit.Tree');
+    dojo.require('dijit.Menu');
+    dojo.require('dojo.data.ItemFileReadStore');
+    dojo.require("dijit.Dialog");
+    dojo.require("dijit.form.Button");
+    dojo.require('dojo.parser');
+
+    // Stores the TreeNode that has last been clicked on
+    var selected_node = null;
+
+    dojo.addOnLoad(function() {
+      dojo.parser.parse();
+    });
+  </script>
+
+{% endblock %}
+
+{% block content %}
+
+<div dojoType="dojo.data.ItemFileReadStore"
+     jsId="dataStore"
+     url="/_treedata/"></div>
+
+<div dojoType="dijit.tree.TreeStoreModel"
+     jsId="model"
+     store="dataStore"
+     query="{title:'*'}"></div>
+
+<ul dojoType="dijit.Menu" id="tree_menu" style="display: none;">
+  <li dojoType="dijit.MenuItem"
+      onClick="window.location.href = '/' + selected_node.item.path;">
+    {% trans "View" %}
+  </li>
+  <li dojoType="dijit.MenuItem"
+      onClick="window.location.href = selected_node.item.edit_url;">
+    {% trans "Edit" %}
+  </li>
+  <li dojoType="dijit.MenuItem"
+      onClick="window.location.href = selected_node.item.child_url;">
+      {% trans "Add child" %}
+  </li>
+  <li dojoType="dijit.MenuItem"
+      onClick="dijit.byId('delete_dialog').show()">
+    {% trans "Delete" %}
+  </li>
+</ul>
+
+<div dojoType="dijit.Dialog" id="delete_dialog" title="Delete Page"
+     execute="window.location.href = selected_node.item.delete_url;"
+     style="display: none;">
+  <div>
+    {% trans "Are you sure you want to delete" %}
+    &quot;<span id="delete_dialog_page_name"></span>&quot;
+    {% trans "and all its children?" %}
+  </div>
+  <div style="text-align: center; margin-top: 10px">
+    <button dojoType="dijit.form.Button" type="submit">Delete</button>
+    <button dojoType="dijit.form.Button"
+            onClick="dijit.byId('delete_dialog').hide()">
+      {% trans "Cancel" %}
+    </button>
+  </div>
+</div>
+
+<div dojoType="dijit.Tree" model="model" menu="tree_menu" style="float: left; width:100%">
+  <script type="dojo/connect">
+    var menu = dijit.byId("tree_menu");
+    menu.bindDomNode(this.domNode);
+
+    // Record some TreeNode-specific settings every time the menu is opened
+    dojo.connect(menu, "_openMyself", this, function(e){
+      selected_node = dijit.getEnclosingWidget(e.target);
+      dojo.byId('delete_dialog_page_name').innerHTML = selected_node.item.title;
+    });
+  </script>
+</div>
+
+<div style="font-size:small; margin-top:40px; float:left;">
+  <i>{% trans "Right click on a page for options." %}</i>
+</div>
+
+{% endblock %}

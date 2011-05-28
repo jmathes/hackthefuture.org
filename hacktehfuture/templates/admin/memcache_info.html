@@ -1,0 +1,14 @@
+{% extends "admin/base.html" %}
+
+{% load i18n %}
+
+{% block content %}
+<div>{% trans "Hits" %}: {{ memcache_info.hits }}</div>
+<div>{% trans "Misses" %}: {{ memcache_info.misses }}</div>
+<div>{% trans "Byte Hits" %}: {{ memcache_info.byte_hits }}</div>
+<div>{% trans "Items" %}: {{ memcache_info.items }}</div>
+<div>{% trans "Bytes" %}: {{ memcache_info.bytes }}</div>
+<div>{% trans "Oldest Item Age" %}: {{ memcache_info.oldest_item_age }}</div>
+
+<div><a href="{% url views.admin.flush_memcache_info %}">{% trans "Flush Memcache" %}</a></div>
+{% endblock %}

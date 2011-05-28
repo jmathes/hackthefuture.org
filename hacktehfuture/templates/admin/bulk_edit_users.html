@@ -1,0 +1,17 @@
+{% extends "admin/base.html" %}
+
+{% load i18n %}
+
+{% block content %}
+<form action="" method="post" enctype="multipart/form-data">
+  <h1>{% trans "Add individually" %}</h1>
+  <textarea rows="15" cols="40" name="users_text"></textarea>
+  <br><br>
+  <h1>{% trans "or upload file" %}</h1>
+  <input type="file" name="users_file"> &nbsp;
+  {% trans "Complete" %}: <input type="checkbox" name="complete"> &nbsp;
+  <br><br><br>
+  <input type="submit" value="{% trans "Submit" %}" />
+</form>
+
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends "admin/base.html" %}
+
+{% load i18n %}
+
+{% block content %}
+
+<h1>{% trans "Defining the sidebar" %}</h1>
+
+{% trans "The sidebar is specified in yaml.  Here's an example sidebar definition" %}:
+
+<pre>
+---
+heading: ''
+
+pages:
+  - title: main
+    id: 1
+
+---
+heading: A good topic
+
+pages:
+  - title: An article
+    id: 2
+
+  - title: Another article
+    id: 3
+</pre>
+
+{% endblock %}

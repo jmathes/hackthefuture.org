@@ -1,0 +1,17 @@
+{% extends "admin/base.html" %}
+
+{% load i18n %}
+
+{% block content %}
+
+<h1>{% trans "Sidebar definition" %}:</h1>
+{% if error_message %}
+{{ error_message }}
+{% endif %}
+<form action="{% url views.admin.edit_sidebar %}" method="post">
+  <textarea rows="25" cols="70" name="yaml">{{ yaml }}</textarea>
+  <br>
+  <input type="submit" value="{% trans "Save" %}">
+</form>
+
+{% endblock %}

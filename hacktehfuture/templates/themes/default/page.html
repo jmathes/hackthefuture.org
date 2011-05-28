@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+
+{% block title %}
+  {{ page.title|escape }}
+{% endblock %}
+
+{% block heading %}
+  <div id="pageTitle">{{ page.title|escape }}</div>
+  {% if is_editor %}
+    <div id="editPageLink">
+      <a href="{% url views.admin.edit_page page.key.id %}">{% trans "Edit page" %}</a> |
+      <a href="{% url views.admin.new_page page.key.id %}">{% trans "Add child" %}</a>
+    </div>
+  {% endif %}
+{% endblock %}
+
+{% block content %}
+  {% if page.breadcrumbs %}
+    <div class="breadcrumbs">
+    {% for breadcrumb in page.breadcrumbs %}
+      <a href="{{ breadcrumb.path }}">{{ breadcrumb.name }}</a>
+      {% if not forloop.last %}
+        &gt;
+      {% endif %}
+    {% endfor %}
+    </div>
+  {% endif %}
+  {% if page.content %}
+    {{ page.content|safe }}
+  {% else %}
+    {% trans "This page does not yet have any content." %}
+  {% endif %}
+
+  {% if files %}
+  <div id="attachments">
+    <h1>{% trans "Attached files" %}:</h1>
+    <ul style="list-style-type:none">
+    {% for file in files %}
+      <li style="list-style-image:url({{file.icon}})">
+      {% if file.url %}
+        <a href="{{ file.url }}">
+      {% else %}
+        <a href="{% url views.main.get_url file.path %}">
+      {% endif %}
+          {{ file.name }}</a>
+    {% endfor %}
+    </ul>
+  </div>
+  {% endif %}
+{% endblock %}

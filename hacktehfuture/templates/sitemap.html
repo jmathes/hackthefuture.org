@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+
+{% block title %}Sitemap{% endblock %}
+{% block heading %}Sitemap{% endblock %}
+
+
+{% block includes %}
+  <script type="text/javascript"
+          src="http://ajax.googleapis.com/ajax/libs/dojo/1.2.0/dojo/dojo.xd.js"
+          djConfig="parseOnLoad:true,isDebug:false"></script>
+
+  <script type="text/javascript">
+    dojo.require('dijit.Tree');
+    dojo.require('dojo.data.ItemFileReadStore');
+  </script>
+{% endblock %}
+
+
+{% block content %}
+<div dojoType="dojo.data.ItemFileReadStore"
+     jsId="dataStore"
+     url="/_treedata/"></div>
+
+<div dojoType="dijit.tree.TreeStoreModel"
+     jsId="model"
+     store="dataStore"
+     query="{title:'*'}"></div>
+
+<div dojoType="dijit.Tree" model="model" menu="tree_menu">
+  <script type="dojo/method" event="onClick" args="item,treeNode">
+    window.location.href = '/' + item.path;
+  </script>
+</div>
+{% endblock %}

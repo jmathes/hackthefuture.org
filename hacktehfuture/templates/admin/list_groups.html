@@ -1,0 +1,23 @@
+{% extends "admin/base.html" %}
+
+{% load i18n %}
+
+{% block content %}
+<h1>{% trans "Groups" %}:</h1>
+
+<ul>
+{% for group in groups %}
+  <li>
+    <b>{{ group.name|escape }}</b> -
+    <a href="{% url views.admin.edit_group group.key.id %}">{% trans "edit" %}</a>
+    <br />
+    {{ group.description|escape }}
+  </li>
+{% endfor %}
+</ul>
+
+<p>
+  <a href="{% url views.admin.new_group %}">{% trans "Create a new group" %}</a>
+</p>
+
+{% endblock %}

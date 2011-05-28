@@ -1,0 +1,62 @@
+{% extends "admin/base.html" %}
+
+{% load i18n %}
+
+{% block includes %}
+  <script type="text/javascript"
+          src="http://ajax.googleapis.com/ajax/libs/dojo/1.2.0/dojo/dojo.xd.js"
+          djConfig="parseOnLoad:true,isDebug:false"></script>
+{% endblock %}
+
+{% block content %}
+<script type="text/javascript">
+  function addToGroup() {
+    window.location = dojo.byId('group_select').value;
+  }
+</script>
+
+<br>
+<form action="" method="post">
+  <table>
+  {% if form %}
+    {{form}}
+  {% else %}
+    <tr>
+      <th>{% trans "Email" %}:</th>
+      <td><input type="text" name="email" id="id_email"></td>
+    </tr>
+  {% endif %}
+  </table>
+  <br>
+  <input type="submit" value="{% trans "Submit" %}" />
+</form>
+
+{% if profile %}
+<div id="groupManagement">
+  {% if profile.groups %}
+  <div>
+    {% trans "User's current groups" %}:
+    <ul>
+    {% for group in profile.groups %}
+      <li>
+        {{ group.name }} - <a href="{% url views.admin.remove_from_group group.key.id,profile.email %}">{% trans "Remove" %}</a>
+      </li>
+    {% endfor %}
+    </ul>
+  </div>
+  {% endif %}
+
+  {% if profile.groups_not_in %}
+  <div>
+    {% trans "Add user to group" %}: <select id="group_select">
+    {% for group in profile.groups_not_in %}
+      <option value="{% url views.admin.add_to_group group.key.id,profile.email %}">{{ group.name }}</option>
+    {% endfor %}
+    </select>
+    <input type="button" onclick="addToGroup();" value="{% trans "Add" %}" />
+  </div>
+  {% endif %}
+</div>
+{% endif %}
+
+{% endblock %}
