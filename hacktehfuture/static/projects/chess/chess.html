@@ -46,51 +46,44 @@ Board = function(board_div) {
     };
 
     this._get_img_pos = function(y, x) {
-        piece = this.squares[y][x];
+        var piece = this.squares[y][x];
         if(piece == null) {
             return '40px 0px';
         }
-        lastpart = ' 0px';
-        if(piece[0] == 'w') {
+        var lastpart = ' 0px';
+        if(piece.charAt(0) == 'w') {
             lastpart = ' 40px';
         }
-        switch(piece[1]) {
-        case 'p':
+        var firstpart = '';
+        if(piece.charAt(1) == 'p') {
             firstpart = '0px';
-            break;
-        case 'k':
+        } else if(piece.charAt(1) == 'k') {
             firstpart = '80px';
-            break;
-        case 'q':
+        } else if(piece.charAt(1) == 'q') {
             firstpart = '120px';
-            break;
-        case 'b':
+        } else if(piece.charAt(1) == 'b') {
             firstpart = '160px';
-            break;
-        case 'n':
+        } else if(piece.charAt(1) == 'n') {
             firstpart = '200px';
-            break;
-        case 'r':
+        } else if(piece.charAt(1) == 'r') {
             firstpart = '240px';
-            break;
         }
-        result = firstpart + lastpart;
-        return result;
+        return firstpart + lastpart;
     };
     
 
     this.draw = function() {
         var _this = this;
         this.board_div.empty();
-        t = $('<table>').css({'display': 'block', 'padding': '1px solid black'}).attr('id', 'board_table');
-        for(y=0; y<=7; y++) {
-            r = $('<tr>').attr('id', 'r'+y);
-            for(x=0; x<=7; x++) {
-                color = "white";
+        var t = $('<table>').css({'display': 'block', 'padding': '1px solid black'}).attr('id', 'board_table');
+        for(var y=0; y<=7; y++) {
+            var r = $('<tr>').attr('id', 'r'+y);
+            for(var x=0; x<=7; x++) {
+                var color = "white";
                 if(((x+y)%2)) {
                     color = "lightgrey";
                 }
-                square = $('<td>')
+                var square = $('<td>')
                     .attr({'id': y+''+x,
                        'x': x,
                        'y': y
@@ -138,7 +131,7 @@ Board = function(board_div) {
             console.log("Trying to capture your own piece");
             return false;
         }
-        piece = this.in_square(start)[1];
+        var piece = this.in_square(start)[1];
         if(piece == 'p') {
             return this.is_pawn_move_allowed(start, end);
         }
@@ -169,7 +162,7 @@ Board = function(board_div) {
         if (start[1] > end[1]) {
             y_direction = -1;
         }
-        walk = [start[0], start[1]];
+        var walk = [start[0], start[1]];
         while(true) {
             walk[0] = walk[0] + x_direction;
             walk[1] = walk[1] + y_direction;
@@ -192,6 +185,8 @@ Board = function(board_div) {
             console.log("Rooks can only move in straight lines");
             return false;
         }
+        var direction = 0;
+        var move_type = 0;
         if (start[0] < end[0]) {
             direction = 1;
             move_type = 0;
@@ -202,13 +197,13 @@ Board = function(board_div) {
         }
         if (start[1] < end[1]) {
             direction = 1;
-            move_type = 1;
+            var move_type = 1;
         }
         if (start[1] > end[1]) {
             direction = -1;
             move_type = 1;
         }
-        walk = [start[0], start[1]];
+        var walk = [start[0], start[1]];
         while(true) {
             walk[move_type] = walk[move_type] + direction;
             if(walk[move_type] < 0 || walk[move_type] > 7) {
@@ -244,7 +239,7 @@ Board = function(board_div) {
     };
     
     this.is_pawn_move_allowed = function(start, end) {
-        direction = -1;
+        var direction = -1;
         if(this.whos_turn == 'b') {
             direction = 1;
         }
@@ -272,8 +267,8 @@ Board = function(board_div) {
     };
     
     this.attempt_move = function() {
-        start = this.move_start;
-        end = this.move_end;
+        var start = this.move_start;
+        var end = this.move_end;
         if(this.is_move_allowed(start, end)) {
             if(this.in_square(end) != null && this.in_square(end)[1] == 'k') {
                 alert("You win!");
@@ -300,8 +295,8 @@ Board = function(board_div) {
 
 
 $(document).ready(function() {
-    board_div = $('#board');
-    board = Board(board_div);
+    var board_div = $('#board');
+    var board = new Board(board_div);
     board.reset();
 });
 </script>
