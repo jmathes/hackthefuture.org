@@ -24,10 +24,12 @@ handlers:
     login: required
      
   - url: /
-    script: hackthefuture.py
-
-  - url: /.*
-    script: main.py
+    static_files: static_pretty/index.html
+    upload: static_pretty/index.html
+     
+  - url: /
+    static_dir: static_pretty
+     
 
     
 skip_files: |
