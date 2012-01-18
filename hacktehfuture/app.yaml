@@ -6,6 +6,9 @@ api_version: 1
 default_expiration: "1d"
 
 handlers:
+  - url: /wiki
+    script: wiki.py 
+
   - url: /favicon.ico
     static_files: static/images/favicon.ico
     upload: static/images/favicon.ico
@@ -29,9 +32,7 @@ handlers:
      
   - url: /
     static_dir: static_pretty
-     
 
-    
 skip_files: |
  ^(.*/)?(
  (app\.yaml)|
