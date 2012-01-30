@@ -1,0 +1,155 @@
+/* HACK THE FUTURE CSS FILE */
+/* Modified From: http://www.maxdesign.com.au/articles/css-layouts/ */
+
+* 
+{
+	margin: 0;
+	padding: 0;
+}
+
+body 
+{
+	font-family: arial;
+	/* make your own at: http://www.stripegenerator.com */
+	background: #fff url('../images/stripes.png') fixed; 
+}
+
+h2 
+{
+	margin: 10px 0;
+}
+
+p 
+{
+	margin: 5px 0;
+}
+
+#content h3 
+{
+	margin: 10px 0;
+}
+
+#container
+{
+	margin: 0 auto;
+	width: 900px;
+	background: #fff;
+}
+
+#header
+{
+	background: #ccc;
+	padding: 20px;
+}
+
+#header h1 { margin: 0; }
+
+#navigation
+{
+	float: left;
+	width: 900px;
+	background: #333;
+}
+
+#navigation ul
+{
+	margin: 0;
+	padding: 0;
+	font-weight: bold;
+}
+
+#navigation ul li
+{
+	list-style-type: none;
+	display: inline;
+}
+
+#navigation li a
+{
+	display: block;
+	float: left;
+	padding: 5px 10px;
+	color: #fff;
+	text-decoration: none;
+	border-right: 1px solid #fff;
+}
+
+#navigation li a:hover { 
+	background: #ccc;
+	color: #000;
+}
+
+#content-container
+{
+	float: left;
+	width: 900px;
+	background: #fff;
+}
+
+#content
+{
+	clear: left;
+	float: left;
+	width: 560px;
+	padding: 20px 0;
+	margin: 0 0 0 30px;
+	display: inline;
+}
+
+#aside
+{
+    border: 1px solid #999999;
+    float: right;
+    margin: 20px;
+    padding: 5px 15px 20px 15px;
+    width: 200px;
+}
+
+#aside h3 
+{ 
+	background: #999;	
+}
+
+
+#aside ul 
+{
+	margin: 10px;
+}
+
+#footer
+{
+	clear: both;
+	background: #ccc;
+	text-align: right;
+	padding: 20px;
+	height: 1%;
+}
+
+/* where is this used? */
+.image-frame {
+	background: none repeat scroll 0 0 #CCCCCC;
+    border: 4px dashed #000000;
+    margin: 4px;
+    padding: 4px;
+	
+}
+
+.image-frame img {
+	border: 1px #000 solid;
+}
+
+.pretty-marquee {
+	background: none repeat scroll 0 0 #F17738;
+    color: #FFFFFF;
+    font-size: 30px;
+    font-weight: bold;
+    padding: 15px;
+}
+
+.an-important-note {
+	padding: 10px;
+	margin: 10px; 
+	border: 5px #000 solid;
+}
+
+.an-important-note 
