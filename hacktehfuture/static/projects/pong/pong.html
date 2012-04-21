@@ -85,6 +85,7 @@
 </div>
     <!-- Put your code inside this script tag -->
 <script type="text/javascript">
+var t;
  // Demonstrate CLASS and ID lookup
 $(".name").after(':')
 $("#gameinfo").css('width', '500px');
@@ -150,8 +151,9 @@ if (ball_y > 489 || ball_y < 1) {
    ball_dx = 1.1;
  }
 
- setTimeout('gametick()', 5);
+ t = setTimeout('gametick()', 5);
 }
+clearTimeout(t);
 gametick();
 
 $(document).keydown(function(e) {
