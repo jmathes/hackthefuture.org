@@ -19,6 +19,30 @@ handlers:
   - url: /fckeditor/.*
     script: zip_handler.py
 
+  - url: /projects/chess
+    static_files: static/projects/chess/chess.html
+    upload: static/projects/chess/chess.html
+
+  - url: /projects/chess_editor
+    static_files: static/projects/chess/chess_editor.html
+    upload: static/projects/chess/chess_editor.html
+
+  - url: /projects/pong
+    static_files: static/projects/pong/pong.html
+    upload: static/projects/pong/pong.html
+
+  - url: /projects/pong_editor
+    static_files: static/projects/pong/pong_editor.html
+    upload: static/projects/pong/pong_editor.html
+
+  - url: /projects/html
+    static_files: static/html/index.html
+    upload: static/html/index.html
+
+  - url: /projects
+    static_files: static/projects/projectlist.html
+    upload: static/projects/projectlist.html
+
   - url: /static
     static_dir: static
 
