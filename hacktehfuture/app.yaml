@@ -43,7 +43,7 @@ handlers:
 
   - url: /about
     static_files: static_pretty/about.html
-    upload: static_pretty/about
+    upload: static_pretty/about.html
 
   - url: /media
     static_files: static_pretty/media.html
