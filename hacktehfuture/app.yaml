@@ -69,6 +69,14 @@ handlers:
     static_files: static_pretty/mentor_faq.html
     upload: static_pretty/mentor_faq.html
 
+  - url: /signup
+    static_files: static_pretty/mentor_faq.html
+    upload: static_pretty/mentor_faq.html
+
+  - url: /sign_up
+    static_files: static_pretty/signup.html
+    upload: static_pretty/signup.html
+
   - url: /mentorfaq
     static_files: static_pretty/mentor_faq.html
     upload: static_pretty/mentor_faq.html
