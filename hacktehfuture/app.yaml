@@ -19,6 +19,74 @@ handlers:
   - url: /fckeditor/.*
     script: zip_handler.py
 
+# The main site (/static_pretty/)
+
+  - url: /index
+    static_files: static_pretty/index.html
+    upload: static_pretty/index.html
+
+  - url: /home
+    static_files: static_pretty/index.html
+    upload: static_pretty/index.html
+
+  - url: /next
+    static_files: static_pretty/nextevent.html
+    upload: static_pretty/nextevent.html
+
+  - url: /nextevent
+    static_files: static_pretty/nextevent.html
+    upload: static_pretty/nextevent.html
+
+  - url: /next_event
+    static_files: static_pretty/nextevent.html
+    upload: static_pretty/nextevent.html
+
+  - url: /about
+    static_files: static_pretty/about.html
+    upload: static_pretty/about
+
+  - url: /media
+    static_files: static_pretty/media.html
+    upload: static_pretty/media.html
+
+  - url: /press
+    static_files: static_pretty/press.html
+    upload: static_pretty/press.html
+
+  - url: /mentor
+    static_files: static_pretty/mentor.html
+    upload: static_pretty/mentor
+
+  - url: /becomeamentor
+    static_files: static_pretty/mentor.html
+    upload: static_pretty/mentor.html
+
+  - url: /become_a_mentor
+    static_files: static_pretty/mentor.html
+    upload: static_pretty/mentor.html
+
+  - url: /mentor_faq
+    static_files: static_pretty/mentor_faq.html
+    upload: static_pretty/mentor_faq.html
+
+  - url: /mentorfaq
+    static_files: static_pretty/mentor_faq.html
+    upload: static_pretty/mentor_faq.html
+
+  - url: /sponsor
+    static_files: static_pretty/sponsor.html
+    upload: static_pretty/sponsor
+
+  - url: /become_a_sponsor
+    static_files: static_pretty/sponsor.html
+    upload: static_pretty/sponsor.html
+
+  - url: /becomeasponsor
+    static_files: static_pretty/sponsor.html
+    upload: static_pretty/sponsor.html
+
+# projects (chess / pong / javascript, etc)
+
   - url: /projects/chess
     static_files: static/projects/chess/chess.html
     upload: static/projects/chess/chess.html
